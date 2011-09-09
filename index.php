@@ -7,5 +7,5 @@ $request->setUsername("pt0000");
 $request->setPassword("asdafagasgsagasgasgdasgdasgasgdsgdag");
 $request->execute();
 
-echo '<pre>' . indent($request->getResponseBody()) . '</pre>';
+echo '<pre>' . $request->getResponseBody() . '</pre>';
 ?>
