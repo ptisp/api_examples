@@ -138,7 +138,7 @@ class RestRequest {
 
     protected function setAuth(&$curlHandle) {
         if ($this->username !== null && $this->password !== null) {
-            curl_setopt($curlHandle, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
+            curl_setopt($curlHandle, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
             curl_setopt($curlHandle, CURLOPT_USERPWD, $this->username . ':' . $this->password);
         }
     }
