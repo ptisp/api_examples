@@ -36,7 +36,7 @@ class RestRequest {
         $this->responseInfo = null;
     }
 
-    public function execute() {
+    public function execute($data = null) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -49,10 +49,10 @@ class RestRequest {
                     $this->executeGet($ch);
                     break;
                 case 'POST':
-                    $this->executePost($ch);
+                    $this->executePost($ch, $data);
                     break;
                 case 'PUT':
-                    $this->executePut($ch);
+                    $this->executePut($ch, $data);
                     break;
                 case 'DELETE':
                     $this->executeDelete($ch);
@@ -84,9 +84,9 @@ class RestRequest {
         $this->doExecute($ch);
     }
 
-    protected function executePost($ch) {
+    protected function executePost($ch,$data = null) {
         if (!is_string($this->requestBody)) {
-            $this->buildPostBody();
+            $this->buildPostBody($data);
         }
 
         curl_setopt($ch, CURLOPT_POSTFIELDS, $this->requestBody);
@@ -95,9 +95,9 @@ class RestRequest {
         $this->doExecute($ch);
     }
 
-    protected function executePut($ch) {
+    protected function executePut($ch, $data) {
         if (!is_string($this->requestBody)) {
-            $this->buildPostBody();
+            $this->buildPostBody($data);
         }
 
         $this->requestLength = strlen($this->requestBody);
