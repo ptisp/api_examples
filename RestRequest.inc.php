@@ -85,9 +85,7 @@ class RestRequest {
     }
 
     protected function executePost($ch,$data = null) {
-        if (!is_string($this->requestBody)) {
-            $this->buildPostBody($data);
-        }
+        $this->buildPostBody($data);
 
         curl_setopt($ch, CURLOPT_POSTFIELDS, $this->requestBody);
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -96,9 +94,7 @@ class RestRequest {
     }
 
     protected function executePut($ch, $data) {
-        if (!is_string($this->requestBody)) {
-            $this->buildPostBody($data);
-        }
+        $this->buildPostBody($data);
 
         $this->requestLength = strlen($this->requestBody);
 
