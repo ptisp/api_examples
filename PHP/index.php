@@ -2,8 +2,8 @@
 
 require "RestRequest.inc.php";
 
-$request = new RestRequest('https://api.ptisp.pt/cloud/1/status', 'GET');
-$request->setUsername("pt0000");
+$request = new RestRequest('https://api.ptisp.pt/domains/example.com/info', 'GET');
+$request->setUsername("example@example.example");
 $request->setPassword("asdafagasgsagasgasgdasgdasgasgdsgdag");
 $request->execute();
 
